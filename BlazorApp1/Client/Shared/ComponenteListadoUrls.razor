@@ -1,0 +1,47 @@
+﻿@if (urisFama is null)
+{
+    <img alt="Cargando"
+         src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" width="150" />
+}
+else if (urisFama.Count == 0)
+{
+    <p>No hay Url para mostrar</p>
+}
+else
+{
+    <TableTemplate Items="urisFama" Context="uriFama">
+        <TableHeader>
+            <th>ID</th>
+            <th>Url</th>
+            <th>State</th>
+            <th>LastComprobation</th>
+            <th>Action</th>
+
+        </TableHeader>
+        <RowTemplate>
+            <td>@uriFama.Id</td>
+            <td>@uriFama.Url</td>
+            @if (@uriFama.State)
+            {
+                <td style="color:green">OnLine</td>
+            }
+            else
+            {
+                <td style="color:red">OffLine</td>
+            }
+            <td>@uriFama.LastComprobation</td>
+            <td><button @onclick="Eliminar">Elimina</button> </td>
+
+        </RowTemplate>
+    </TableTemplate>
+}
+
+@code {
+    [Parameter]
+    public List<UriFama>? urisFama { get; set; }
+
+    void Eliminar()
+    {
+        Console.WriteLine($"Eliminando la url ");
+    }
+}

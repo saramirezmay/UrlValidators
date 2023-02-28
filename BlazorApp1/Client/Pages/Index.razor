@@ -1,0 +1,24 @@
+﻿@page "/"
+
+
+<PageTitle>Listado de URL FAMA</PageTitle>
+<h3>Url a monitorear</h3>
+
+<ComponenteListadoUrls urisFama="GetUriFamas()"/>
+<br />
+<ComponenteInsertUrl/>
+
+@code {
+
+
+    List<UriFama> GetUriFamas()
+    {
+        return new List<UriFama>()
+        {
+            new UriFama { Id = 1, Url = "http://innovation:9090/NotificationService/swagger/index.html" , State = true, LastComprobation = DateTime.Now},
+            new UriFama { Id = 2, Url = "http://innovation:9091/NotificationService/swagger/index.html" , State = false, LastComprobation = DateTime.Now},
+            new UriFama { Id = 3, Url = "http://innovation:9091/NotificationService/swagger/index.html", State= false, LastComprobation = DateTime.Now }
+        };
+    }
+}
+
